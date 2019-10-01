@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Zag-Regular';
+    src: url(/assets/Zag-Regular.otf);
+}
+
+body {
+    font-family: 'Zag-Regular' !important;
+}
+
+@font-face {
+    font-family: 'Zag-Bold';
+    src: url(/assets/Zag-Bold.otf);
+}

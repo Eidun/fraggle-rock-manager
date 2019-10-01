@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <input type="text" class="form-control" id="filtrado" placeholder="Buscar...">
+  </div>
+  <div class="row">
+    <button role="button" type="button" [class.active]="personajesButton" class="btn btn-outline-warning col-6 col-md-3" (click)="personajesButton = !personajesButton; navesButton = false; lugaresButton = false; obtenerDatos();">Personajes</button>
+    <button type="button" role="button" [class.active]="organizacionesButton" class="btn btn-outline-danger col-6 col-md-3" (click)="organizacionesButton = !organizacionesButton; navesButton = false; lugaresButton = false; obtenerDatos();">Organizaciones</button>
+    <button type="button" role="button" [class.active]="navesButton" class="btn btn-outline-info col-6 col-md-3" (click)="navesButton = !navesButton; personajesButton = false; organizacionesButton = false; obtenerDatos();">Naves</button>
+    <button type="button" role="button" [class.active]="lugaresButton" class="btn btn-outline-success col-6 col-md-3" (click)="lugaresButton = !lugaresButton; personajesButton = false; organizacionesButton = false; obtenerDatos();">Lugares</button>
+  </div>
+</div>
+<br />
+<app-tabla *ngIf="!loading" [tableInfo]="table"></app-tabla>
