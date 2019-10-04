@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <input type="text" class="form-control" id="filtrado" placeholder="Buscar...">
+    <input (input)="filtrar($event)" type="text" class="form-control" id="filtrado" placeholder="Buscar...">
   </div>
   <div class="row">
     <button role="button" type="button" [class.active]="personajesButton" class="btn btn-outline-warning col-6 col-md-3" (click)="personajesButton = !personajesButton; navesButton = false; lugaresButton = false; obtenerDatos();">Personajes</button>
@@ -10,4 +10,4 @@
   </div>
 </div>
 <br />
-<app-tabla *ngIf="!loading" [tableInfo]="table"></app-tabla>
+<app-tabla *ngIf="!loading" [tableInfo]="table" ></app-tabla>

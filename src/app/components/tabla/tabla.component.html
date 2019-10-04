@@ -1,12 +1,12 @@
 
 <table class="table table-striped table-hover table-sm">
-  <thead class="thead-inverse">
+  <thead class="thead-dark">
     <tr>
       <th *ngFor="let head of tableInfo.heads" scope="col">{{head}}</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let d of tableInfo.data" (click)="detalles(d)">
+    <tr *ngFor="let d of tableInfo.getData()" (click)="getDetalles(d)">
       <td *ngFor="let value of d.values">{{value}}</td>
     </tr>
   </tbody>

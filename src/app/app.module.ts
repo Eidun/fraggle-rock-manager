@@ -5,8 +5,14 @@ import { AppComponent } from './app.component';
 import { ListadoComponent } from './components/listado/listado.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PersonajeInfoComponent } from './components/personajes/personaje-info/personaje-info.component';
+import { OrganizacionInfoComponent } from './components/organizaciones/organizacion-info/organizacion-info.component';
+import { VolverInfoComponent } from './components/volver-info/volver-info.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
+  { path: 'info/personajes/:id', component: PersonajeInfoComponent },
+  { path: 'info/organizaciones/:id', component: OrganizacionInfoComponent },
   { path: '', component: ListadoComponent }
 ];
 
@@ -14,14 +20,18 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ListadoComponent,
-    TablaComponent
+    TablaComponent,
+    PersonajeInfoComponent,
+    OrganizacionInfoComponent,
+    VolverInfoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     )
   ],
   providers: [],

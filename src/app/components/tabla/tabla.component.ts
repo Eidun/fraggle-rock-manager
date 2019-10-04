@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Tableable } from 'src/app/models/tableable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabla',
@@ -10,9 +11,13 @@ export class TablaComponent implements OnInit {
 
   @Input() tableInfo: Tableable;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  getDetalles(element) {
+    this.router.navigate(['/info' + element.path, element.id]);
   }
 
 }

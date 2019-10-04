@@ -1,0 +1,33 @@
+<div class="container bordereto">
+    <div class="row bg-dark">
+        <h5 class="text-white m-2">Personaje</h5>
+    </div>
+</div>
+<div class="container bordereto">
+    <div class="row" *ngIf="loading">
+        <div class="col text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!loading">
+        <div class="col">
+            <img [src]="personaje.imagen ? personaje.imagen : personaje.defaultImagen" style="width: 250px; height: 100%;"
+                class="card-img-top">
+        </div>
+        <div class="col mt-4">
+            <h2 class="card-title fraggeTitulo">{{personaje.alias}}</h2>
+            <p><b>Nombre:</b> {{personaje.nombre}} {{personaje.apellidos}}</p>
+            <p><b>Rango:</b> {{personaje.rango}}</p>
+            <p><b>Edad:</b> {{personaje.edad}}</p>
+            <p><b>Raza:</b> {{personaje.raza}}</p>
+            <p><b>Descripcion:</b> {{personaje.descripcion}}</p>
+        </div>
+    </div>
+</div>
+<div class="bordereto table-responsive bg-dark" *ngIf="!loading && personaje.organizacion">
+    <h5 class="text-white m-2">Organización del personaje</h5>
+    <app-tabla [tableInfo]="personaje.organizacion"></app-tabla>
+</div>
+<app-volver-info></app-volver-info>

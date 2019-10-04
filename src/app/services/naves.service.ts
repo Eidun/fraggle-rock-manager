@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HOST } from '../app.values';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrganizacionesService {
+export class NavesService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'http://localhost:5000/organizaciones';
+  url = HOST + 'naves';
   
-  public getOrganizaciones()  {
+  public getNaves()  {
     return this.http.get(this.url);
   }
 }
