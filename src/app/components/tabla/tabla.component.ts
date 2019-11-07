@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class TablaComponent implements OnInit {
 
   @Input() tableInfo: Tableable;
+  @Input() borrable: boolean;
+  @Output() borrableAction: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private router: Router) { }
 
@@ -18,6 +20,10 @@ export class TablaComponent implements OnInit {
 
   getDetalles(element) {
     this.router.navigate(['/info' + element.path, element.id]);
+  }
+
+  borrar() {
+    this.borrableAction.emit(true);
   }
 
 }

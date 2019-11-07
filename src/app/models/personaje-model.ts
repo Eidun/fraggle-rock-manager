@@ -31,7 +31,7 @@ export class Personaje extends Entidad {
     imagen: string;
     defaultImagen = 'https://png.pngtree.com/svg/20170527/user_unknown_1048445.png'
     organizacion: OrganizacionTable;
-    constructor(json) {
+    constructor(json: any={}) {
         super(json);
         super.clase = 'Personaje';
         

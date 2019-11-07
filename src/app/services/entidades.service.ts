@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HOST } from '../app.values'
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +32,13 @@ export class EntidadesService {
 
   public getPersonaje(idPersonaje) {
     return this.getData(this.personajesURL + '/' + idPersonaje)
+  }
+
+  public newPersonaje(personajePayload): Observable<any> {
+    return this.http.post(this.personajesURL, personajePayload);
+  }
+  public updatePersonaje(idPersonaje, personajePayload): Observable<any> {
+    return this.http.put(this.personajesURL + '/' + idPersonaje, personajePayload);
   }
 
   public getOrganizacion(idOrganizacion) {

@@ -22,7 +22,6 @@ export class PersonajeInfoComponent implements OnInit {
       idPersonaje = params.id;
     });
     this.personajeService.getPersonaje(idPersonaje).subscribe(data => {
-      console.log(data);
       this.personaje = new Personaje(data);
       this.loading = false;
     });

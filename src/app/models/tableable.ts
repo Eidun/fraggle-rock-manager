@@ -7,7 +7,7 @@ export class Tableable {
     getData() {
         let finalData = this.data;
         if (this.filter) {
-            finalData = finalData.filter(d => 
+            finalData = finalData.filter(d =>
                 d.values.some(value => {
                     return value ? value.toLowerCase().includes(this.filter.toLowerCase()) : false;
                 })

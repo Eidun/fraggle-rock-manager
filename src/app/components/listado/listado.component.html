@@ -1,13 +1,48 @@
 <div class="container">
+
   <div class="row">
     <input (input)="filtrar($event)" type="text" class="form-control" id="filtrado" placeholder="Buscar...">
   </div>
+
   <div class="row">
-    <button role="button" type="button" [class.active]="personajesButton" class="btn btn-outline-warning col-6 col-md-3" (click)="personajesButton = !personajesButton; navesButton = false; lugaresButton = false; obtenerDatos();">Personajes</button>
-    <button type="button" role="button" [class.active]="organizacionesButton" class="btn btn-outline-danger col-6 col-md-3" (click)="organizacionesButton = !organizacionesButton; navesButton = false; lugaresButton = false; obtenerDatos();">Organizaciones</button>
-    <button type="button" role="button" [class.active]="navesButton" class="btn btn-outline-info col-6 col-md-3" (click)="navesButton = !navesButton; personajesButton = false; organizacionesButton = false; obtenerDatos();">Naves</button>
-    <button type="button" role="button" [class.active]="lugaresButton" class="btn btn-outline-success col-6 col-md-3" (click)="lugaresButton = !lugaresButton; personajesButton = false; organizacionesButton = false; obtenerDatos();">Lugares</button>
+    <button role="button" type="button" [class.active]="personajesButton" class="btn btn-outline-warning col-6 col-md-3"
+      (click)="personajesButton = !personajesButton; navesButton = false; lugaresButton = false; obtenerDatos();">Personajes</button>
+    <button type="button" role="button" [class.active]="organizacionesButton"
+      class="btn btn-outline-danger col-6 col-md-3"
+      (click)="organizacionesButton = !organizacionesButton; navesButton = false; lugaresButton = false; obtenerDatos();">Organizaciones</button>
+    <button type="button" role="button" [class.active]="navesButton" class="btn btn-outline-info col-6 col-md-3"
+      (click)="navesButton = !navesButton; personajesButton = false; organizacionesButton = false; obtenerDatos();">Naves</button>
+    <button type="button" role="button" [class.active]="lugaresButton" class="btn btn-outline-success col-6 col-md-3"
+      (click)="lugaresButton = !lugaresButton; personajesButton = false; organizacionesButton = false; obtenerDatos();">Lugares</button>
   </div>
+
 </div>
 <br />
-<app-tabla *ngIf="!loading" [tableInfo]="table" ></app-tabla>
+<app-tabla *ngIf="!loading" [tableInfo]="table"></app-tabla>
+<br />
+<button role="button" type="button" class="btn btn-outline-dark" data-toggle="modal"
+  data-target="#exampleModal">Nuevo</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fraggeTitulo" id="exampleModalLabel">Añadir nuevo...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <a class="btn btn-outline-dark col-6 col-md-3" data-dismiss="modal" routerLink="/data/personajes">Personaje</a>
+            <a class="btn btn-outline-dark col-6 col-md-3" data-dismiss="modal" routerLink="/data/organizaciones">Organización</a>
+            <a class="btn btn-outline-dark col-6 col-md-3" data-dismiss="modal" routerLink="/data/naves">Nave</a>
+            <a class="btn btn-outline-dark col-6 col-md-3" data-dismiss="modal" routerLink="/data/lugares">Lugar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,4 @@
-<div class="container bordereto">
-    <div class="row bg-dark">
-        <h5 class="text-white m-2">Personaje</h5>
-    </div>
-</div>
+<cabecera [titulo]="'Personaje'"></cabecera>
 <div class="container bordereto">
     <div class="row" *ngIf="loading">
         <div class="col text-center">
@@ -12,11 +8,11 @@
         </div>
     </div>
     <div class="row" *ngIf="!loading">
-        <div class="col">
-            <img [src]="personaje.imagen ? personaje.imagen : personaje.defaultImagen" style="width: 250px; height: 100%;"
+        <div class="col-md-6 col-sm-12">
+            <img [src]="personaje.imagen ? personaje.imagen : personaje.defaultImagen" style="max-width: 100%; height: auto;"
                 class="card-img-top">
         </div>
-        <div class="col mt-4">
+        <div class="col-md-6 mt-4 col-sm-12">
             <h2 class="card-title fraggeTitulo">{{personaje.alias}}</h2>
             <p><b>Nombre:</b> {{personaje.nombre}} {{personaje.apellidos}}</p>
             <p><b>Rango:</b> {{personaje.rango}}</p>
@@ -30,4 +26,4 @@
     <h5 class="text-white m-2">Organización del personaje</h5>
     <app-tabla [tableInfo]="personaje.organizacion"></app-tabla>
 </div>
-<app-volver-info></app-volver-info>
+<app-volver-info *ngIf="!loading" [id]="personaje.id" [tipo]="'personajes'"></app-volver-info>

@@ -1,0 +1,77 @@
+<cabecera [titulo]="'Personaje'"></cabecera>
+<form class="container bordereto" [formGroup]="personajeForm">
+    <div class="row" *ngIf="loading">
+        <div class="col text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!loading">
+        <div class="col-md-6 col-sm-12">
+            <b><label for="imagen">URL imagen</label></b>
+            <input id="imagen" type="text" class="form-control" name="imagen" formControlName="imagen"
+                (blur)="checkImagen()">
+            <img *ngIf="imagenURL" [src]="imagenURL" style="max-width: 100%; height: auto" class="img-responsive">
+        </div>
+        <div class="col-md-6 mt-4 col-sm-12">
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <h2 class="card-title fraggeTitulo"><label for="alias">Alias</label></h2>
+                    <input id="alias" type="text" class="form-control" formControlName="alias" name="alias">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <b><label for="nombre">Nombre</label></b>
+                    <input id="nombre" type="text" class="form-control" formControlName="nombre" name="nombre">
+                </div>
+                <div class="form-group col-6">
+                    <b><label for="apellidos">Apellidos</label></b>
+                    <input id="apellidos" type="text" class="form-control" formControlName="apellidos" name="apellidos">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <b><label for="rango">Rango</label></b>
+                    <input id="rango" type="text" class="form-control" formControlName="rango" name="rango">
+                </div>
+                <div class="form-group col-3">
+                    <b><label for="edad">Edad</label></b>
+                    <input id="edad" type="text" class="form-control" formControlName="edad" name="edad">
+                </div>
+                <div class="form-group col-4">
+                    <b><label for="raza">Raza</label></b>
+                    <input id="raza" type="text" class="form-control" formControlName="raza" name="raza">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <b><label for="rango">Descripción</label></b>
+                    <textarea id="descripcion" type="text" class="form-control" formControlName="descripcion"
+                        name="descripcion"></textarea>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row bordereto mt-2" *ngIf="!loading">
+        <div class="col-md-6 col-sm-12 mt-2 mb-2">
+            <b><label for="filtroOrganizaciones">Organizaciones</label></b>
+            <input autocomplete="off" type="text" name="filtroOrganizaciones" class="form-control"
+                (input)="filtrarOrganizaciones($event)" (focusin)="organizacionFocus=true"
+                (focusout)="salirFocoOrganizaciones();">
+            <div *ngIf="!loadingOrganizaciones" class="dropdown-menu" [ngClass]="organizacionFocus ? 'show' : ''">
+                <a *ngFor="let organizacion of organizacionesFiltradas()" class="dropdown-item btn-outline-dark"
+                    (click)="cambiarOrganizacion(organizacion)">{{organizacion.alias}}</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+        </div>
+    </div>
+</form>
+<div class="bordereto table-responsive bg-dark" *ngIf="!loading && personaje.organizacion">
+    <h5 class="text-white m-2">Organización del personaje</h5>
+    <app-tabla [tableInfo]="personaje.organizacion" [borrable]="true" (borrableAction)="abandonarOrganizacion()"></app-tabla>
+</div>
+<app-botones-data (emmiter)="guardarPersonaje($event)"></app-botones-data>
