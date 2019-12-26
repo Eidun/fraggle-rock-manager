@@ -118,6 +118,18 @@ export class PersonajeDataComponent implements OnInit {
     return payload;
   }
 
+  eliminarPersonaje(event) {
+    let personajeRequest;
+    if (this.personajeForm.value.id) {
+      personajeRequest = this.entidadesService.deletePersonaje(this.personajeForm.value.id);
+      personajeRequest.subscribe(data => {
+        this.router.navigate(['/']);
+      });
+    } else {
+      alert("Solo se puede eliminar un personaje creado");
+    }
+  }
+
   organizacionesFiltradas() {
     const resultados = this.organizaciones.filter(organizacion => organizacion.alias.toLowerCase().includes(this.organizacionesFiltro.toLowerCase())).slice(0, 3);
     return resultados.length > 0 ? resultados : [{ alias: 'No hay resultados' }]
