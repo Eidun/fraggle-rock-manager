@@ -4,6 +4,7 @@ import { EntidadTable } from 'src/app/models/entidad-model';
 import { OrganizacionTable } from 'src/app/models/organizacion-model';
 import { PersonajeTable } from 'src/app/models/personaje-model';
 import { Tableable } from 'src/app/models/tableable';
+import { EstacionEspacialTable } from 'src/app/models/estaciones-espaciales-model';
 import { LugaresService } from 'src/app/services/lugares.service';
 import { LugarTable } from 'src/app/models/lugar-model';
 import { NaveTable } from 'src/app/models/nave-model';
@@ -59,12 +60,18 @@ export class ListadoComponent implements OnInit {
           this.loading = false;
         })
         break;
-        case 'naves':
+      case 'naves':
             this.navesService.getNaves().subscribe(data => {
               this.table = new NaveTable(data);
               this.loading = false;
             })
-            break;
+        break;
+      case 'estaciones-espaciales':
+        this.navesService.getNaves().subscribe(data => {
+          this.table = new EstacionEspacialTable(data);
+          this.loading = false;
+        })
+      break;
     }
   }
 

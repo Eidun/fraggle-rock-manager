@@ -16,6 +16,7 @@ import { OrganizacionDataComponent } from './components/organizaciones/organizac
 
 const appRoutes: Routes = [
   { path: 'data/personajes/:id', component: PersonajeDataComponent },
+  { path: 'data/organizaciones', component: OrganizacionDataComponent },
   { path: 'data/personajes', component: PersonajeDataComponent },
   { path: 'info/personajes/:id', component: PersonajeInfoComponent },
   { path: 'info/organizaciones/:id', component: OrganizacionInfoComponent },
