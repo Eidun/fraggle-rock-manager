@@ -98,4 +98,16 @@ export class OrganizacionDataComponent implements OnInit {
     return payload;
   }
 
+  eliminarOrganizacion(event) {
+    let organizacionRequest;
+    if (this.organizacionForm.value.id) {
+      organizacionRequest = this.entidadesService.deleteOrganizacion(this.organizacionForm.value.id);
+      organizacionRequest.subscribe(data => {
+        this.router.navigate(['/']);
+      });
+    } else {
+      alert("Solo se puede eliminar una organización creada");
+    }
+  }
+
 }
