@@ -44,4 +44,11 @@ export class EntidadesService {
   public getOrganizacion(idOrganizacion) {
     return this.getData(this.organizacionesURL + '/' + idOrganizacion)
   }
+  
+  public newOrganizacion(organizacionPayload): Observable<any> {
+    return this.http.post(this.organizacionesURL, organizacionPayload);
+  }
+  public updateOrganizacion(idOrganizacion, organizacionPayload): Observable<any> {
+    return this.http.put(this.organizacionesURL + '/' + idOrganizacion, organizacionPayload);
+  }
 }

@@ -1,5 +1,5 @@
-<cabecera [titulo]="'Organización'"></cabecera>   
-<div class="container bordereto">
+<cabecera [titulo]="'Organizacion'"></cabecera>
+<form class="container bordereto" [formGroup]="organizacionForm">
     <div class="row" *ngIf="loading">
         <div class="col text-center">
             <div class="spinner-border" role="status">
@@ -9,20 +9,40 @@
     </div>
     <div class="row" *ngIf="!loading">
         <div class="col-md-6 col-sm-12">
-            <img [src]="organizacion.imagen ? organizacion.imagen : organizacion.defaultImagen" style="max-width: 100%; height: auto;"
-                class="card-img-top">
+            <b><label for="imagen">URL imagen</label></b>
+            <input id="imagen" type="text" class="form-control" name="imagen" formControlName="imagen"
+                (blur)="checkImagen()">
+            <img *ngIf="imagenURL" [src]="imagenURL" style="max-width: 100%; height: auto" class="img-responsive">
         </div>
         <div class="col-md-6 mt-4 col-sm-12">
-            <h2 class="card-title fraggeTitulo">{{organizacion.alias}}</h2>
-            <p><b>Status:</b> {{organizacion.status}}</p>
-            <p><b>Nivel de poder:</b> {{organizacion.nivelPoder}}</p>
-            <p><b>Miembros:</b> {{organizacion.numeroMiembros}}</p>
-            <p><b>Descripcion:</b> {{organizacion.descripcion}}</p>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <h2 class="card-title fraggeTitulo"><label for="alias">Alias</label></h2>
+                    <input id="alias" type="text" class="form-control" formControlName="alias" name="alias">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <b><label for="status">Status</label></b>
+                    <input id="status" type="text" class="form-control" formControlName="status" name="status">
+                </div>
+                <div class="form-group col-3">
+                    <b><label for="nivel_poder">Nivel de Poder</label></b>
+                    <input id="nivel_poder" type="text" class="form-control" formControlName="nivel_poder" name="nivel_poder">
+                </div>
+                <div class="form-group col-4">
+                    <b><label for="numero_miembros">Numero de Miembros</label></b>
+                    <input id="numero_miembros" type="number" class="form-control" formControlName="numero_miembros" name="numero_miembros">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <b><label for="rango">Descripción</label></b>
+                    <textarea id="" type="text" class="form-control" formControlName="descripcion"
+                        name="descripcion"></textarea>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<div class="bordereto table-responsive bg-dark" *ngIf="!loading && organizacion.miembros">
-    <h5 class="text-white m-2">Miembros de la organizacion</h5>
-    <app-tabla [tableInfo]="organizacion.miembros"></app-tabla>
-</div>
-<app-volver-info></app-volver-info>
+</form>
+<app-botones-data (emmiter)="guardarOrganizacion($event)"></app-botones-data>

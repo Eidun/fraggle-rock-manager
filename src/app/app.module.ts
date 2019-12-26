@@ -7,15 +7,16 @@ import { TablaComponent } from './components/tabla/tabla.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonajeInfoComponent } from './components/personajes/personaje-info/personaje-info.component';
 import { OrganizacionInfoComponent } from './components/organizaciones/organizacion-info/organizacion-info.component';
-import { VolverInfoComponent } from './components/volver-info/volver-info.component';
+import { VolverInfoComponent } from './shared/volver-info/volver-info.component';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { PersonajeDataComponent } from './components/personajes/personaje-data/personaje-data.component';
-import { BotonesDataComponent } from './components/botones-data/botones-data.component';
+import { BotonesDataComponent } from './shared/botones-data/botones-data.component';
 import { CabeceraComponent } from './shared/cabecera/cabecera.component';
 import { OrganizacionDataComponent } from './components/organizaciones/organizacion-data/organizacion-data.component';
 
 const appRoutes: Routes = [
   { path: 'data/personajes/:id', component: PersonajeDataComponent },
+  { path: 'data/organizaciones', component: OrganizacionDataComponent },
   { path: 'data/personajes', component: PersonajeDataComponent },
   { path: 'info/personajes/:id', component: PersonajeInfoComponent },
   { path: 'info/organizaciones/:id', component: OrganizacionInfoComponent },

@@ -30,7 +30,7 @@ export class Organizacion extends Entidad {
     defaultImagen = 'https://i.ibb.co/WWW7q4K/Captura.png'
     lider: Personaje;
     miembros: PersonajeTable;
-    constructor(json) {
+    constructor(json: any={}) {
         super(json);
         super.clase = 'Organizacion';
         
@@ -39,7 +39,7 @@ export class Organizacion extends Entidad {
         this.nivelPoder = json.nivel_poder;
         this.descripcion = json.descripcion;
         this.imagen = json.imagen;
-        if (json.miembros.length > 0) {
+        if (json.miembros !== undefined && json.miembros.length > 0) {
             this.miembros = new PersonajeTable(json.miembros);
         }
     }
