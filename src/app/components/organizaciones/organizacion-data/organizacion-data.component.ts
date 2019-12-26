@@ -29,7 +29,8 @@ export class OrganizacionDataComponent implements OnInit {
       status: [""],
       nivel_poder: [""],
       numero_miembros: [""],
-      descripcion: [""]
+      descripcion: [""],
+      imagen: [""]
     });
 
     this.checkIDOrganizacion();
@@ -49,13 +50,15 @@ export class OrganizacionDataComponent implements OnInit {
   public loadOrganizacion(idOrganizacion) {
     this.loading = true;
     this.entidadesService.getOrganizacion(idOrganizacion).subscribe((data: any) => {
+      console.log(data)
       this.organizacion = new Organizacion(data);
       this.organizacionForm.controls.id.setValue(data.id);
       this.organizacionForm.controls.alias.setValue(data.alias);
       this.organizacionForm.controls.status.setValue(data.status);
-      this.organizacionForm.controls.nivelPoder.setValue(data.nivelPoder);
-      this.organizacionForm.controls.numeroMiembros.setValue(data.numeroMiembros);
+      this.organizacionForm.controls.nivel_poder.setValue(data.nivel_poder);
+      this.organizacionForm.controls.numero_miembros.setValue(data.numero_miembros);
       this.organizacionForm.controls.descripcion.setValue(data.descripcion);
+      this.organizacionForm.controls.imagen.setValue(data.imagen);
       this.loading = false;
       this.checkImagen();
     });

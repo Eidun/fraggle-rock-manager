@@ -9,6 +9,7 @@ import { EventEmitter } from '@angular/core';
 export class BotonesDataComponent implements OnInit {
 
   @Output() emmiter = new EventEmitter();
+  @Output() deletter = new EventEmitter();
 
   constructor() { }
 
@@ -17,5 +18,10 @@ export class BotonesDataComponent implements OnInit {
 
   guardar() {
     this.emmiter.emit("");
+  }
+
+  
+  eliminar() {
+    this.deletter.emit("");
   }
 }

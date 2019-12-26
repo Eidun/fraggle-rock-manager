@@ -40,6 +40,9 @@ export class EntidadesService {
   public updatePersonaje(idPersonaje, personajePayload): Observable<any> {
     return this.http.put(this.personajesURL + '/' + idPersonaje, personajePayload);
   }
+  public deletePersonaje(idPersonaje): Observable<any> {
+    return this.http.delete(this.personajesURL + '/' + idPersonaje);
+  }
 
   public getOrganizacion(idOrganizacion) {
     return this.getData(this.organizacionesURL + '/' + idOrganizacion)
@@ -50,5 +53,8 @@ export class EntidadesService {
   }
   public updateOrganizacion(idOrganizacion, organizacionPayload): Observable<any> {
     return this.http.put(this.organizacionesURL + '/' + idOrganizacion, organizacionPayload);
+  }
+  public deleteOrganizacion(idOrganizacion): Observable<any> {
+    return this.http.delete(this.organizacionesURL + '/' + idOrganizacion);
   }
 }

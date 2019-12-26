@@ -74,4 +74,4 @@
     <h5 class="text-white m-2">Organización del personaje</h5>
     <app-tabla [tableInfo]="personaje.organizacion" [borrable]="true" (borrableAction)="abandonarOrganizacion()"></app-tabla>
 </div>
-<app-botones-data (emmiter)="guardarPersonaje($event)"></app-botones-data>
+<app-botones-data (emmiter)="guardarPersonaje($event)" (deletter)="eliminarPersonaje($event)"></app-botones-data>
