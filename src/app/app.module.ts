@@ -13,6 +13,9 @@ import { PersonajeDataComponent } from './components/personajes/personaje-data/p
 import { BotonesDataComponent } from './shared/botones-data/botones-data.component';
 import { CabeceraComponent } from './shared/cabecera/cabecera.component';
 import { OrganizacionDataComponent } from './components/organizaciones/organizacion-data/organizacion-data.component';
+import { LugarInfoComponent } from './components/lugares/lugar-info/lugar-info.component';
+import { NavesInfoComponent } from './components/naves/naves-info/naves-info.component';
+import { NavesDataComponent } from './components/naves/naves-data/naves-data.component';
 
 const appRoutes: Routes = [
   { path: 'data/personajes/:id', component: PersonajeDataComponent },
@@ -21,6 +24,8 @@ const appRoutes: Routes = [
   { path: 'info/organizaciones/:id', component: OrganizacionInfoComponent },
   { path: 'data/organizaciones', component: OrganizacionDataComponent },
   { path: 'data/organizaciones/:id', component: OrganizacionDataComponent },
+  { path: 'info/naves/:id', component: NavesInfoComponent },
+  { path: 'info/lugares/:id', component: LugarInfoComponent },
   { path: '', component: ListadoComponent }
 ];
 
@@ -35,7 +40,10 @@ const appRoutes: Routes = [
     PersonajeDataComponent,
     BotonesDataComponent,
     CabeceraComponent,
-    OrganizacionDataComponent
+    OrganizacionDataComponent,
+    LugarInfoComponent,
+    NavesInfoComponent,
+    NavesDataComponent
   ],
   imports: [
     BrowserModule,

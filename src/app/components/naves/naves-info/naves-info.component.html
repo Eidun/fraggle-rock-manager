@@ -1,0 +1,26 @@
+<cabecera *ngIf="!loading" [titulo]="nave.clase"></cabecera>
+<div class="container bordereto">
+    <div class="row" *ngIf="loading">
+        <div class="col text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!loading">
+        <div class="col-md-6 col-sm-12">
+            <img [src]="nave.imagen ? nave.imagen : nave.defaultImagen" style="max-width: 100%; height: auto;"
+                class="card-img-top">
+        </div>
+        <div class="col-md-6 mt-4 col-sm-12">
+            <h2 class="card-title fraggeTitulo">{{nave.nombre}}</h2>
+            <p><b>Modelo:</b> {{nave.modelo}}</p>
+            <p><b>Descripcion:</b> {{nave.descripcion}}</p>
+        </div>
+    </div>
+</div>
+<div class="bordereto table-responsive bg-dark" *ngIf="!loading && nave.tripulantes">
+    <h5 class="text-white m-2">Tripulación</h5>
+    <app-tabla [tableInfo]="organizacion.miembros"></app-tabla>
+</div>
+<app-volver-info *ngIf="!loading" [id]="nave.id" [tipo]="'naves'"></app-volver-info>

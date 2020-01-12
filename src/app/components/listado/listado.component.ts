@@ -10,7 +10,7 @@ import { LugarTable } from 'src/app/models/lugar-model';
 import { NaveTable } from 'src/app/models/nave-model';
 import { NavesService } from 'src/app/services/naves.service';
 import { Router } from '@angular/router';
-
+// TODO APLICAR FILTRADO AL CAMBIAR ENTIDAD
 @Component({
   selector: 'app-listado',
   templateUrl: './listado.component.html',
@@ -35,43 +35,53 @@ export class ListadoComponent implements OnInit {
   obtenerDatos() {
     this.loading = true;
     const fuenteDatos = this.comprobarFuente();
+    let previousFilter;
+    if (this.table) {
+      previousFilter = this.table.filter;
+    }
     switch (fuenteDatos) {
       case 'entidades':
         this.entidadesService.getEntidades().subscribe(data => {
           this.table = new EntidadTable(data);
+          this.table.filter = previousFilter;
           this.loading = false;
         });
         break;
       case 'organizaciones':
         this.entidadesService.getOrganizaciones().subscribe(data => {
           this.table = new OrganizacionTable(data);
+          this.table.filter = previousFilter;
           this.loading = false;
         })
         break;
       case 'personajes':
         this.entidadesService.getPersonajes().subscribe(data => {
           this.table = new PersonajeTable(data);
+          this.table.filter = previousFilter;
           this.loading = false;
         })
         break;
       case 'lugares':
         this.lugaresService.getLugares().subscribe(data => {
           this.table = new LugarTable(data);
+          this.table.filter = previousFilter;
           this.loading = false;
         })
         break;
       case 'naves':
-            this.navesService.getNaves().subscribe(data => {
-              this.table = new NaveTable(data);
-              this.loading = false;
-            })
+        this.navesService.getNaves().subscribe(data => {
+          this.table = new NaveTable(data);
+          this.table.filter = previousFilter;
+          this.loading = false;
+        })
         break;
       case 'estaciones-espaciales':
         this.navesService.getNaves().subscribe(data => {
           this.table = new EstacionEspacialTable(data);
+          this.table.filter = previousFilter;
           this.loading = false;
         })
-      break;
+        break;
     }
   }
 

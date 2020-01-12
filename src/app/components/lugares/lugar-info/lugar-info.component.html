@@ -1,0 +1,25 @@
+<cabecera *ngIf="!loading" [titulo]="lugar.clase"></cabecera>
+<div class="container bordereto">
+    <div class="row" *ngIf="loading">
+        <div class="col text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!loading">
+        <div class="col-md-6 col-sm-12">
+            <img [src]="lugar.imagen ? lugar.imagen : lugar.defaultImagen" style="max-width: 100%; height: auto;"
+                class="card-img-top">
+        </div>
+        <div class="col-md-6 mt-4 col-sm-12">
+            <h2 class="card-title fraggeTitulo">{{lugar.nombre}}</h2>
+            <p><b>Sector:</b> {{lugar.sector}}</p>
+            <p><b>Sistema:</b> {{lugar.sistema}}</p>
+            <p><b>Poblacion:</b> {{lugar.poblacion}}</p>
+            <p><b>Nivel tecnológico:</b> {{lugar.nivelTecnologico}}</p>
+            <p><b>Nivel seguridad:</b> {{lugar.nivelSeguridad}}</p>
+        </div>
+    </div>
+</div>
+<app-volver-info *ngIf="!loading" [id]="lugar.id" [tipo]="'lugares'"></app-volver-info>

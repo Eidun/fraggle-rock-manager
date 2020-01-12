@@ -25,4 +25,4 @@
     <h5 class="text-white m-2">Miembros de la organizacion</h5>
     <app-tabla [tableInfo]="organizacion.miembros"></app-tabla>
 </div>
-<app-volver-info [id]="organizacion.id" [tipo]="'organizaciones'"></app-volver-info>
+<app-volver-info *ngIf="!loading" [id]="organizacion.id" [tipo]="'organizaciones'"></app-volver-info>

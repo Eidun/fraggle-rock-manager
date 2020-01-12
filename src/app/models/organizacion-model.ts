@@ -17,7 +17,6 @@ export class OrganizacionTable extends Tableable {
         });
     }
 
-
 }
 
 export class Organizacion extends Entidad {

@@ -14,4 +14,8 @@ export class NavesService {
   public getNaves()  {
     return this.http.get(this.url);
   }
+
+  public getNave(idNave) {
+    return this.http.get(this.url + '/' + idNave);
+  }
 }

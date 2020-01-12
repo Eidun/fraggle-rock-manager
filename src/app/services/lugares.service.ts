@@ -14,4 +14,8 @@ export class LugaresService {
   public getLugares()  {
     return this.http.get(this.url);
   }
+
+  public getLugar(idLugar) {
+    return this.http.get(this.url + '/' + idLugar);
+  }
 }
